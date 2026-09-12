@@ -2,11 +2,7 @@ package at.hausberger.restaurant_app.controller;
 
 import at.hausberger.restaurant_app.model.Gericht;
 import at.hausberger.restaurant_app.repository.GerichtRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +24,25 @@ public class GerichtController {
     @PostMapping
     public Gericht neuesGericht(@RequestBody Gericht gericht) {
         return gerichtRepository.save(gericht);
+    }
+
+    @GetMapping("/{id}")
+    public Gericht einGericht(@PathVariable Long id) {
+        return gerichtRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Gericht nicht gefunden"));
+    }
+
+    @PutMapping("/{id}")
+    public Gericht gerichtAendern(@PathVariable Long id, @RequestBody Gericht neueDaten) {
+        Gericht gericht = gerichtRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Gericht nicht gefunden"));
+        gericht.setName(neueDaten.getName());
+        gericht.setPreis(neueDaten.getPreis());
+        return gerichtRepository.save(gericht);
+    }
+
+    @DeleteMapping("/{id}")
+    public void gerichtLoeschen(@PathVariable Long id) {
+        gerichtRepository.deleteById(id);
     }
 }
