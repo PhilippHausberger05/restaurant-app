@@ -15,6 +15,7 @@ A REST API for a restaurant ordering system, built as a portfolio project to lea
 - Full CRUD for menu items (`Gericht`) and customers (`Kunde`)
 - Domain validation enforced in the entity itself, not just at the API layer
 - Centralized error handling with meaningful JSON error responses
+- Order domain modeled with `Bestellung` / `Bestellposition` entities, `@ManyToOne`/`@OneToMany` relationships, and a `BestellStatus` enum
 
 ## Running Locally
 
