@@ -24,15 +24,15 @@ A REST API for a restaurant ordering system, built as a portfolio project to lea
 
 ## API Endpoints
 
-Method | Path            | Description         |
-
-GET    | /gerichte       | List all menu items |
-GET    | /gerichte/{id}  | Get one menu item   |
-POST   | /gerichte       | Create a menu item  |
-PUT    | /gerichte/{id}  | Update a menu item  |
-DELETE | /gerichte/{id}  | Delete a menu item  |
-GET    | /kunden         | List all customers  |
-GET    | /kunden/{id}    | Get one customer    |
-POST   | /kunden         | Create a customer   |
-PUT    | /kunden/{id}    | Update a customer   |
-DELETE | /kunden/{id}    | Delete a customer   |
+| Method | Path            | Description          |
+|--------|-----------------|-----------------------|
+| GET    | /gerichte       | List all menu items  |
+| GET    | /gerichte/{id}  | Get one menu item    |
+| POST   | /gerichte       | Create a menu item   |
+| PUT    | /gerichte/{id}  | Update a menu item   |
+| DELETE | /gerichte/{id}  | Delete a menu item   |
+| GET    | /kunden         | List all customers   |
+| GET    | /kunden/{id}    | Get one customer     |
+| POST   | /kunden         | Create a customer    |
+| PUT    | /kunden/{id}    | Update a customer    |
+| DELETE | /kunden/{id}    | Delete a customer    |
