@@ -5,6 +5,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Bestellposition {
@@ -17,6 +18,7 @@ public class Bestellposition {
 
     @ManyToOne
     @JoinColumn(name = "bestellung_id")
+    @JsonIgnore
     private Bestellung bestellung;
 
     @ManyToOne
