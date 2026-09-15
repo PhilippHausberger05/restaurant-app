@@ -36,7 +36,17 @@ public class Bestellung {
         if (status == null) {
             throw new IllegalArgumentException("Status darf nicht leer sein");
         }
-        this.status = status;
+        int neu = status.ordinal();
+        int aktuell = this.status.ordinal();
+        if (aktuell == neu) {
+            throw new IllegalArgumentException("Dieser Status wurde schon gesetzt");
+        }
+        else if (Math.abs(aktuell - neu) > 1 ) {
+            throw new IllegalArgumentException("Darf nur in den vorherigen oder Status danach wechseln");
+        }
+        else {
+            this.status = status;
+        }
     }
 
     public void setKunde(Kunde kunde) {

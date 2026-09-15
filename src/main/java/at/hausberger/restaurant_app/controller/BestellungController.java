@@ -50,5 +50,13 @@ public class BestellungController {
         return bestellungRepository.save(bestellung);
     }
 
+    @PutMapping("/{id}/status")
+    public Bestellung statusAendern(@PathVariable Long id, @RequestBody BestellStatus neuerStatus) {
+        Bestellung bestellung = bestellungRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Bestellung nicht gefunden"));
+        bestellung.setBestellStatus(neuerStatus);
+        return bestellungRepository.save(bestellung);
+    }
+
 
 }
