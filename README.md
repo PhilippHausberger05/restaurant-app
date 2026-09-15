@@ -16,6 +16,7 @@ A REST API for a restaurant ordering system, built as a portfolio project to lea
 - Domain validation enforced in the entity itself, not just at the API layer
 - Centralized error handling with meaningful JSON error responses
 - Order domain modeled with `Bestellung` / `Bestellposition` entities, `@ManyToOne`/`@OneToMany` relationships, and a `BestellStatus` enum
+- Order creation via `Bestellung` REST endpoints, with `BestellungRequest`/`PositionRequest` DTOs decoupling the API from the entity structure
 
 ## Running Locally
 
@@ -37,3 +38,6 @@ A REST API for a restaurant ordering system, built as a portfolio project to lea
 | POST   | /kunden         | Create a customer    |
 | PUT    | /kunden/{id}    | Update a customer    |
 | DELETE | /kunden/{id}    | Delete a customer    |
+| GET    | /bestellungen       | List all orders       |
+| GET    | /bestellungen/{id}  | Get one order         |
+| POST   | /bestellungen       | Create a new order    |
