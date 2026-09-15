@@ -17,6 +17,7 @@ A REST API for a restaurant ordering system, built as a portfolio project to lea
 - Centralized error handling with meaningful JSON error responses
 - Order domain modeled with `Bestellung` / `Bestellposition` entities, `@ManyToOne`/`@OneToMany` relationships, and a `BestellStatus` enum
 - Order creation via `Bestellung` REST endpoints, with `BestellungRequest`/`PositionRequest` DTOs decoupling the API from the entity structure
+- Order-status workflow with transition rules (one step forward or back only) via `PUT /bestellungen/{id}/status`
 
 ## Running Locally
 
@@ -41,3 +42,4 @@ A REST API for a restaurant ordering system, built as a portfolio project to lea
 | GET    | /bestellungen       | List all orders       |
 | GET    | /bestellungen/{id}  | Get one order         |
 | POST   | /bestellungen       | Create a new order    |
+| PUT    | /bestellungen/{id}/status | Change order status |
