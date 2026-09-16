@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BestellungTest {
 
     @Test
-    void gueltigerStatuswechselVorwaertsFunktioniert() {
+    void gueltigerStatuswechselVorwaertsWirdGesetzt() {
         Kunde kunde = new Kunde("Test", "test@test.com");
         Bestellung bestellung = new Bestellung(kunde);
 
@@ -16,7 +16,7 @@ class BestellungTest {
     }
 
     @Test
-    void gueltigerStatuswechselZurueckFunktioniert() {
+    void gueltigerStatuswechselZurueckWirdGesetzt() {
         Kunde kunde = new Kunde("Test", "test@test.com");
         Bestellung bestellung = new Bestellung(kunde);
 
@@ -27,7 +27,7 @@ class BestellungTest {
     }
 
     @Test
-    void ungueltigerStatuswechselZweiUnterschied() {
+    void ungueltigerStatuswechselZweiUnterschiedWirftException() {
         Kunde kunde = new Kunde("Test", "test@test.com");
         Bestellung bestellung = new Bestellung(kunde);
 
@@ -38,14 +38,28 @@ class BestellungTest {
     }
 
     @Test
-    void ungueltigerStatuswechselKeinUnterschied() {
+    void ungueltigerStatuswechselKeinUnterschiedWirftException() {
         Kunde kunde = new Kunde("Test", "test@test.com");
         Bestellung bestellung = new Bestellung(kunde);
 
         assertThrows(IllegalArgumentException.class, () -> {
-            bestellung.setBestellStatus(BestellStatus.AUFGEGEBEN);;
+            bestellung.setBestellStatus(BestellStatus.AUFGEGEBEN);
         });
 
+    }
+
+    @Test
+    void gueltigerKundenWirdGesetzt() {
+        Kunde kunde = new Kunde("Test", "test@test.com");
+        Bestellung bestellung = new Bestellung(kunde);
+        assertEquals(kunde, bestellung.getKunde());
+    }
+
+    @Test
+    void ungueltigerKundenWirftException() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Bestellung(null);
+        });
     }
 
 }

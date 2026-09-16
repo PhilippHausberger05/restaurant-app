@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 class BestellpositionTest {
 
     @Test
-    void gueltigeBestellPositionWirdGesetzt() {
+    void gueltigeBestellpositionWirdGesetzt() {
         Gericht gericht = new Gericht("Pizza", 9.5);
         Kunde kunde = new Kunde("Test", "test@test.com");
         Bestellung bestellung = new Bestellung(kunde);
@@ -19,7 +19,7 @@ class BestellpositionTest {
     }
 
     @Test
-    void ungueltigeMengeKleinerEins() {
+    void ungueltigeMengeKleinerEinsWirftException() {
         Gericht gericht = new Gericht("Pizza", 9.5);
         Kunde kunde = new Kunde("Test", "test@test.com");
         Bestellung bestellung = new Bestellung(kunde);
@@ -29,7 +29,7 @@ class BestellpositionTest {
     }
 
     @Test
-    void ungueltigesGerichtGleichNull() {
+    void ungueltigesGerichtGleichNullWirftException() {
         Kunde kunde = new Kunde("Test", "test@test.com");
         Bestellung bestellung = new Bestellung(kunde);
         assertThrows(IllegalArgumentException.class, () -> {
@@ -38,7 +38,7 @@ class BestellpositionTest {
     }
 
     @Test
-    void ungueltigeBestellungGleichNull() {
+    void ungueltigeBestellungGleichNullWirftException() {
         Kunde kunde = new Kunde("Test", "test@test.com");
         Gericht gericht = new Gericht("Pizza", 9.5);
         assertThrows(IllegalArgumentException.class, () -> {
