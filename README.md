@@ -18,6 +18,7 @@ A REST API for a restaurant ordering system, built as a portfolio project to lea
 - Order domain modeled with `Bestellung` / `Bestellposition` entities, `@ManyToOne`/`@OneToMany` relationships, and a `BestellStatus` enum
 - Order creation via `Bestellung` REST endpoints, with `BestellungRequest`/`PositionRequest` DTOs decoupling the API from the entity structure
 - Order-status workflow with transition rules (one step forward or back only) via `PUT /bestellungen/{id}/status`
+- Unit test coverage for entity validation logic using Junit 5 for `Gericht`, `Kunde`, `Bestellung`, `Bestellposition`
 
 ## Running Locally
 
