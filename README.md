@@ -22,6 +22,12 @@ A REST API for a restaurant ordering system, built as a portfolio project to lea
 
 ## Running Locally
 
+### With Docker
+1. Copy `.env.example` to `.env` and set `DB_PASSWORD`
+2. Run `docker compose up --build`
+3. App available at `http://localhost:8080`
+
+### Without Docker
 1. Create a PostgreSQL database named `restaurant`
 2. Set the `DB_PASSWORD` environment variable to your PostgreSQL password
 3. Run `RestaurantAppApplication` — the app starts on `http://localhost:8080`
