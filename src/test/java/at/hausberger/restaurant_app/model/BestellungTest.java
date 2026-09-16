@@ -62,4 +62,17 @@ class BestellungTest {
         });
     }
 
+    @Test
+    void addPositionenSynchronisiertBeideSeiten() {
+        Kunde kunde = new Kunde("Test", "test@gmail.com");
+        Bestellung bestellung = new Bestellung(kunde);
+        Gericht gericht = new Gericht("Pizza",9.5);
+        Bestellposition position = new Bestellposition(2, gericht, bestellung);
+
+        bestellung.addPositionen(position);
+
+        assertTrue(bestellung.getPositionen().contains(position));
+        assertEquals(bestellung, position.getBestellung());
+    }
+
 }
