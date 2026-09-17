@@ -19,6 +19,7 @@ A REST API for a restaurant ordering system, built as a portfolio project to lea
 - Order creation via `Bestellung` REST endpoints, with `BestellungRequest`/`PositionRequest` DTOs decoupling the API from the entity structure
 - Order-status workflow with transition rules (one step forward or back only) via `PUT /bestellungen/{id}/status`
 - Unit test coverage for entity validation logic using Junit 5 for `Gericht`, `Kunde`, `Bestellung`, `Bestellposition`
+- Persistent database storage via a named Docker volume, surviving container recreation
 
 ## Running Locally
 
@@ -26,6 +27,7 @@ A REST API for a restaurant ordering system, built as a portfolio project to lea
 1. Copy `.env.example` to `.env` and set `DB_PASSWORD`
 2. Run `docker compose up --build`
 3. App available at `http://localhost:8080`
+4. Use `docker compose down` to stop (data is preserved); `docker compose down -v` also deletes the database volume
 
 ### Without Docker
 1. Create a PostgreSQL database named `restaurant`
