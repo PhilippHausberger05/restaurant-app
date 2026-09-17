@@ -1,5 +1,6 @@
 package at.hausberger.restaurant_app.exception;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -30,5 +31,12 @@ public class GlobalExceptionHandler {
                 ? ursache.getMessage() : "Ungültiger Request-Body";
         return ResponseEntity.badRequest()
                 .body(Map.of("error", nachricht));
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<Map<String, String>> handleDataIntegrity(DataIntegrityViolationException e) {
+        String nachricht = "Email existiert bereits";
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(Map.of("error" ,nachricht));
     }
 }

@@ -1,9 +1,7 @@
 package at.hausberger.restaurant_app.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
 @Entity
 public class Kunde {
@@ -13,7 +11,9 @@ public class Kunde {
     private Long id;
 
     private String name;
+    @Column(unique = true)
     private String email;
+    private String hashedPassword;
 
     public Kunde() {
     }
@@ -37,12 +37,25 @@ public class Kunde {
         }
         this.email = email;
     }
+
+    public void setHashedPassword(String hashedPassword) {
+        if (hashedPassword == null || hashedPassword.isEmpty()) {
+            throw new IllegalArgumentException("Passwort ist leer");
+        }
+        this.hashedPassword = hashedPassword;
+    }
+
     public String getEmail() {
         return email;
     }
 
     public String getName() {
         return name;
+    }
+
+    @JsonIgnore
+    public String getHashedPassword() {
+        return hashedPassword;
     }
 
     public Long getId() {

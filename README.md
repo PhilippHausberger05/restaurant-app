@@ -9,7 +9,7 @@ A REST API for a restaurant ordering system, built as a portfolio project to lea
 - PostgreSQL
 - Maven
 
-## Features (in progress)
+## Features
 
 - Layered architecture (model / repository / controller)
 - Full CRUD for menu items (`Gericht`) and customers (`Kunde`)
@@ -20,6 +20,7 @@ A REST API for a restaurant ordering system, built as a portfolio project to lea
 - Order-status workflow with transition rules (one step forward or back only) via `PUT /bestellungen/{id}/status`
 - Unit test coverage for entity validation logic using Junit 5 for `Gericht`, `Kunde`, `Bestellung`, `Bestellposition`
 - Persistent database storage via a named Docker volume, surviving container recreation
+- Authentication with Spring Security (HTTP Basic), BCrypt password hashing, and unique email constraint
 
 ## Running Locally
 
@@ -35,6 +36,8 @@ A REST API for a restaurant ordering system, built as a portfolio project to lea
 3. Run `RestaurantAppApplication` — the app starts on `http://localhost:8080`
 
 ## API Endpoints
+
+Public endpoints: `GET /gerichte/**` and `POST /kunden`. All others require authentication.
 
 | Method | Path            | Description          |
 |--------|-----------------|-----------------------|
