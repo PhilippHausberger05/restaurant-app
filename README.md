@@ -21,6 +21,7 @@ A REST API for a restaurant ordering system, built as a portfolio project to lea
 - Unit test coverage for entity validation logic using Junit 5 for `Gericht`, `Kunde`, `Bestellung`, `Bestellposition`
 - Persistent database storage via a named Docker volume, surviving container recreation
 - Authentication with Spring Security (HTTP Basic), BCrypt password hashing, and unique email constraint
+- Role-based authorization (USER / ADMIN): menu management and order status changes are admin-only
 
 ## Running Locally
 
@@ -35,9 +36,22 @@ A REST API for a restaurant ordering system, built as a portfolio project to lea
 2. Set the `DB_PASSWORD` environment variable to your PostgreSQL password
 3. Run `RestaurantAppApplication` — the app starts on `http://localhost:8080`
 
+### Creating an admin user
+
+New accounts are always created with the `USER` role — self-assigning `ADMIN` is deliberately not possible. To grant admin rights, update the user directly in the database:
+
+1. Register a user via `POST /kunden`
+2. Connect to the database:
+   - Docker: `docker compose exec db psql -U postgres -d restaurant`
+   - Local: `psql -U postgres -d restaurant`
+3. Promote the user: `UPDATE kunde SET rolle = 1 WHERE email = 'your@email.com';`
+4. Restart is not required — the role is read on each login
+
+Roles are stored by their ordinal position: `0` = USER, `1` = ADMIN.
+
 ## API Endpoints
 
-Public endpoints: `GET /gerichte/**` and `POST /kunden`. All others require authentication.
+Public: `GET /gerichte/**`, `POST /kunden`. Admin-only: creating, updating and deleting menu items, and changing order status. All other endpoints require authentication.
 
 | Method | Path            | Description          |
 |--------|-----------------|-----------------------|

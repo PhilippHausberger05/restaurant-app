@@ -24,7 +24,7 @@ public class KundeDetailsService implements UserDetailsService {
 
         return User.withUsername(kunde.getEmail())
                 .password(kunde.getHashedPassword())
-                .roles("USER")
+                .roles(kunde.getRolle().name())
                 .build();
     }
 }

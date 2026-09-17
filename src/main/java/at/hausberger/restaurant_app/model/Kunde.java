@@ -14,11 +14,14 @@ public class Kunde {
     @Column(unique = true)
     private String email;
     private String hashedPassword;
+    private KundeRolle rolle;
 
     public Kunde() {
+        this.rolle = KundeRolle.USER;
     }
 
     public Kunde(String name, String email) {
+        this();
         setName(name);
         setEmail(email);
     }
@@ -43,6 +46,10 @@ public class Kunde {
             throw new IllegalArgumentException("Passwort ist leer");
         }
         this.hashedPassword = hashedPassword;
+    }
+
+    public KundeRolle getRolle() {
+        return rolle;
     }
 
     public String getEmail() {

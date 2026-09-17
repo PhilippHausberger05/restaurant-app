@@ -24,6 +24,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.GET, "/gerichte/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/kunden").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/gerichte").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/gerichte/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/gerichte/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/bestellungen/*/status").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults());
