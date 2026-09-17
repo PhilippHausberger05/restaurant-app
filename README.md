@@ -44,7 +44,7 @@ New accounts are always created with the `USER` role — self-assigning `ADMIN` 
 2. Connect to the database:
    - Docker: `docker compose exec db psql -U postgres -d restaurant`
    - Local: `psql -U postgres -d restaurant`
-3. Promote the user: `UPDATE kunde SET rolle = 1 WHERE email = 'your@email.com';`
+3. Promote the user: `- c" UPDATE kunde SET rolle = 1 WHERE email = 'your@email.com';"`
 4. Restart is not required — the role is read on each login
 
 Roles are stored by their ordinal position: `0` = USER, `1` = ADMIN.
